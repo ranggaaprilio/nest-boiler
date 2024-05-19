@@ -22,8 +22,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./jest-e2e.json --coverage",
-    "migration:generate": "cross-var ts-node node_modules/typeorm/cli.js migration:generate database/migrations/migrations -d src/infrastructure/config/typeorm/typeorm.config.ts",
-    "migration:create": "cross-var ts-node node_modules/typeorm/cli.js migration:create database/migrations/migrations",
+    "migration:generate": "cross-var ts-node node_modules/typeorm/cli.js migration:generate src/infrastructure/database/migrations/migrations -d src/infrastructure/config/typeorm/typeorm.config.ts",
+    "migration:create": "cross-var ts-node node_modules/typeorm/cli.js migration:create src/infrastructure/database/migrations/migrations",
     "migrate": "ts-node node_modules/typeorm/cli.js migration:run -d src/infrastructure/config/typeorm/typeorm.config.ts",
     "migration:down": "ts-node node_modules/typeorm/cli.js migration:revert -d src/infrastructure/config/typeorm/typeorm.config.ts"
   },

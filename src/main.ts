@@ -27,6 +27,8 @@ async function bootstrap() {
   // base routing
   app.setGlobalPrefix('api_v1');
 
+  app.enableCors();
+
   // swagger config
   if (env !== 'production') {
     const config = new DocumentBuilder()

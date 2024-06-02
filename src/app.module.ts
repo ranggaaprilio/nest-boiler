@@ -11,9 +11,11 @@ import { EnvironmentConfigModule } from './infrastructure/config/environment-con
 import { LocalStrategy } from './infrastructure/common/strategies/local.strategy';
 import { JwtStrategy } from './infrastructure/common/strategies/jwt.strategy';
 import { JwtRefreshTokenStrategy } from './infrastructure/common/strategies/jwtRefresh.strategy';
+import { WebsocketsModule } from './infrastructure/websockets/websockets.module'; 
 
 @Module({
   imports: [
+    WebsocketsModule,
     PassportModule,
     JwtModule.register({
       secret: process.env.secret,

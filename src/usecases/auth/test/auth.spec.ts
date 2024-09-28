@@ -145,6 +145,7 @@ describe('uses_cases/authentication', () => {
         Promise.resolve(true)
       )
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...rest } = user
 
       expect(
@@ -279,6 +280,7 @@ describe('uses_cases/authentication', () => {
         Promise.resolve(user)
       )
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...rest } = user
 
       expect(await isAuthenticated.execute('username')).toEqual(rest)

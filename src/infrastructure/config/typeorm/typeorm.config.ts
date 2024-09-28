@@ -1,7 +1,7 @@
 import { DataSourceOptions, DataSource } from 'typeorm'
 import * as dotenv from 'dotenv'
 import { registerAs } from '@nestjs/config'
-import path, { join } from 'path'
+// import path, { join } from 'path'
 
 // if (process.env.NODE_ENV === "local") {
 //   dotenv.config({ path: "./env/local.env" });

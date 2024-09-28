@@ -34,7 +34,7 @@ describe('WebsocketsGateway', () => {
       transports: ['websocket', 'polling'],
     })
     // Start the app
-    app.listen(3001)
+    await app.listen(3001)
   })
 
   afterAll(async () => {

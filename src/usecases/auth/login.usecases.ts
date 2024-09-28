@@ -38,8 +38,7 @@ export class LoginUseCases {
     const expiresIn = this.jwtConfig.getJwtRefreshExpirationTime() + 's'
     const token = this.jwtTokenService.createToken(payload, secret, expiresIn)
     await this.setCurrentRefreshToken(token, username)
-    const cookie = `Refresh=${token}; HttpOnly; Path=/; Max-Age=${this.jwtConfig.getJwtRefreshExpirationTime()}`
-    return cookie
+    return `Refresh=${token}; HttpOnly; Path=/; Max-Age=${this.jwtConfig.getJwtRefreshExpirationTime()}`
   }
 
   async validateUserForLocalStragtegy(username: string, pass: string) {
@@ -50,6 +49,7 @@ export class LoginUseCases {
     const match = await this.bcryptService.compare(pass, user.password)
     if (user && match) {
       await this.updateLoginTime(user.username)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...result } = user
       return result
     }

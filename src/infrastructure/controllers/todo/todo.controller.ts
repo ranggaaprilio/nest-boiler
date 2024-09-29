@@ -15,11 +15,11 @@ import { UsecasesProxyModule } from '../../usecases-proxy/usecases-proxy.module'
 import { GetTodoUseCases } from '../../../usecases/todo/getTodo.usecases'
 import { TodoPresenter } from './todo.presenter'
 import { ApiResponseType } from '../../common/swagger/response.decorator'
-import { getTodosUseCases } from '../../../usecases/todo/getTodos.usecases'
-import { updateTodoUseCases } from '../../../usecases/todo/updateTodo.usecases'
+import { GetTodosUseCases } from '../../../usecases/todo/getTodos.usecases'
+import { UpdateTodoUseCases } from '../../../usecases/todo/updateTodo.usecases'
 import { AddTodoDto, UpdateTodoDto } from './todo.dto'
-import { deleteTodoUseCases } from '../../../usecases/todo/deleteTodo.usecases'
-import { addTodoUseCases } from '../../../usecases/todo/addTodo.usecases'
+import { DeleteTodoUseCases } from '../../../usecases/todo/deleteTodo.usecases'
+import { AddTodoUseCases } from '../../../usecases/todo/addTodo.usecases'
 
 @Controller('todo')
 @ApiTags('todo')
@@ -30,13 +30,13 @@ export class TodoController {
     @Inject(UsecasesProxyModule.GET_TODO_USECASES_PROXY)
     private readonly getTodoUsecaseProxy: UseCaseProxy<GetTodoUseCases>,
     @Inject(UsecasesProxyModule.GET_TODOS_USECASES_PROXY)
-    private readonly getAllTodoUsecaseProxy: UseCaseProxy<getTodosUseCases>,
+    private readonly getAllTodoUsecaseProxy: UseCaseProxy<GetTodosUseCases>,
     @Inject(UsecasesProxyModule.PUT_TODO_USECASES_PROXY)
-    private readonly updateTodoUsecaseProxy: UseCaseProxy<updateTodoUseCases>,
+    private readonly updateTodoUsecaseProxy: UseCaseProxy<UpdateTodoUseCases>,
     @Inject(UsecasesProxyModule.DELETE_TODO_USECASES_PROXY)
-    private readonly deleteTodoUsecaseProxy: UseCaseProxy<deleteTodoUseCases>,
+    private readonly deleteTodoUsecaseProxy: UseCaseProxy<DeleteTodoUseCases>,
     @Inject(UsecasesProxyModule.POST_TODO_USECASES_PROXY)
-    private readonly addTodoUsecaseProxy: UseCaseProxy<addTodoUseCases>
+    private readonly addTodoUsecaseProxy: UseCaseProxy<AddTodoUseCases>
   ) {}
 
   @Get('todo')

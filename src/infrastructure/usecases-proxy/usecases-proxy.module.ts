@@ -1,9 +1,9 @@
 import { DynamicModule, Module } from '@nestjs/common'
-import { addTodoUseCases } from '../../usecases/todo/addTodo.usecases'
-import { deleteTodoUseCases } from '../../usecases/todo/deleteTodo.usecases'
+import { AddTodoUseCases } from '../../usecases/todo/addTodo.usecases'
+import { DeleteTodoUseCases } from '../../usecases/todo/deleteTodo.usecases'
 import { GetTodoUseCases } from '../../usecases/todo/getTodo.usecases'
-import { getTodosUseCases } from '../../usecases/todo/getTodos.usecases'
-import { updateTodoUseCases } from '../../usecases/todo/updateTodo.usecases'
+import { GetTodosUseCases } from '../../usecases/todo/getTodos.usecases'
+import { UpdateTodoUseCases } from '../../usecases/todo/updateTodo.usecases'
 import { IsAuthenticatedUseCases } from '../../usecases/auth/isAuthenticated.usecases'
 import { LoginUseCases } from '../../usecases/auth/login.usecases'
 import { LogoutUseCases } from '../../usecases/auth/logout.usecases'
@@ -98,7 +98,7 @@ export class UsecasesProxyModule {
           inject: [DatabaseTodoRepository],
           provide: UsecasesProxyModule.GET_TODOS_USECASES_PROXY,
           useFactory: (todoRepository: DatabaseTodoRepository) =>
-            new UseCaseProxy(new getTodosUseCases(todoRepository)),
+            new UseCaseProxy(new GetTodosUseCases(todoRepository)),
         },
         {
           inject: [LoggerService, DatabaseTodoRepository],
@@ -106,7 +106,7 @@ export class UsecasesProxyModule {
           useFactory: (
             logger: LoggerService,
             todoRepository: DatabaseTodoRepository
-          ) => new UseCaseProxy(new addTodoUseCases(logger, todoRepository)),
+          ) => new UseCaseProxy(new AddTodoUseCases(logger, todoRepository)),
         },
         {
           inject: [LoggerService, DatabaseTodoRepository],
@@ -114,7 +114,7 @@ export class UsecasesProxyModule {
           useFactory: (
             logger: LoggerService,
             todoRepository: DatabaseTodoRepository
-          ) => new UseCaseProxy(new updateTodoUseCases(logger, todoRepository)),
+          ) => new UseCaseProxy(new UpdateTodoUseCases(logger, todoRepository)),
         },
         {
           inject: [LoggerService, DatabaseTodoRepository],
@@ -122,7 +122,7 @@ export class UsecasesProxyModule {
           useFactory: (
             logger: LoggerService,
             todoRepository: DatabaseTodoRepository
-          ) => new UseCaseProxy(new deleteTodoUseCases(logger, todoRepository)),
+          ) => new UseCaseProxy(new DeleteTodoUseCases(logger, todoRepository)),
         },
       ],
       exports: [

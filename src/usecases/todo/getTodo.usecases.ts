@@ -5,6 +5,10 @@ export class GetTodoUseCases {
   constructor(private readonly todoRepository: TodoRepository) {}
 
   async execute(id: number): Promise<TodoM> {
-    return await this.todoRepository.findById(id)
+    const result= await this.todoRepository.findById(id)
+    if (!result) {
+      throw new Error('Todo not found')
+    }
+    return result
   }
 }

@@ -2,7 +2,7 @@ import { ILogger } from '../../domain/logger/logger.interface'
 import { TodoM } from '../../domain/model/todo'
 import { TodoRepository } from '../../domain/repositories/todoRepository.interface'
 
-export class addTodoUseCases {
+export class AddTodoUseCases {
   constructor(
     private readonly logger: ILogger,
     private readonly todoRepository: TodoRepository
